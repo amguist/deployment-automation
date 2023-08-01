@@ -6,3 +6,25 @@ def sourceCodeCheckout(sourceCodeUrl) {
         println("Current value of source code url: " + sourceCodeUrl)
     }
 }
+
+def groupId() {
+    def matcher = readFile('pom.xml') =~ '<groupId>(.+)</groupId>'
+    matcher ? matcher[0][1] : null
+
+    String foundGroupId = matcher[0][1]
+    return foundGroupId
+}
+
+def serviceVersion() {
+    def matcher = readFile('pom.xml') =~ '<version>(.+)</version>'
+    matcher ? matcher[0][1] : null
+
+    String foundPomVersion = matcher[0][1]
+    if(foundPomVersion =~ /SNAPSHOT/) {
+        def fullVersion = foundPomVersion.split('-')
+        version = fullVersion[0]
+    } else {
+        version = foundPomVersion
+    }
+    return version;
+}

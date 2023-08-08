@@ -11,6 +11,23 @@ def sourceCodeCheckout(sourceCodeUrl) {
     }
 }
 
+def serviceBuild(ver,group,artifactId) {
+    def startTime = System.currentTimeMillis()
+    def endTime
+    def buildTime
+    def isBuildSuccessful = false
+
+    try {
+        sh 'mvn clean install'
+        isBuildSuccessful = true
+        endTime = System.currentTimeMillis()
+        buildTime = endTime - startTime
+    } catch (exception) {
+        println("Jenkins Build Failed ${env.BUILD_URL}")
+        throw exception
+    }
+}
+
 def groupId() {
     def matcher = readFile('pom.xml') =~ '<groupId>(.+)</groupId>'
     matcher ? matcher[0][1] : null

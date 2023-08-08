@@ -32,3 +32,5 @@ def serviceVersion() {
     }
     return version;
 }
+
+return this

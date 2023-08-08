@@ -20,7 +20,7 @@ def groupId() {
 }
 
 def serviceVersion() {
-    def matcher = readFile('pom.xml') =~ '<version>(.+)</version>'
+    def matcher = readFile('pom.xml') =~ '<revision>(.+)</revision>'
     matcher ? matcher[0][1] : null
 
     String foundPomVersion = matcher[0][1]

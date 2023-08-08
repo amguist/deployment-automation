@@ -1,8 +1,4 @@
 
-def sayHello() {
-    println("Hello There")
-}
-
 def sourceCodeCheckout(sourceCodeUrl) {
     if ( sourceCodeUrl =~ /.git/ ) {
         checkout([$class: 'GitSCM', branches: [[name: '*/main']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'LocalBranch', localBranch: 'main'],[$class: 'WipeWorkspace'], [$class: 'UserExclusion', excludedUsers: 'amguist']], gitTool: 'Git 1.9.4', submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'github_user', url:sourceCodeUrl]]])

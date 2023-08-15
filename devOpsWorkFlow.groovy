@@ -1,7 +1,7 @@
 
 def sourceCodeCheckout(sourceCodeUrl) {
     if ( sourceCodeUrl =~ /.git/ ) {
-        checkout([$class: 'GitSCM', branches: [[name: '*/main']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'LocalBranch', localBranch: 'main'],[$class: 'WipeWorkspace'], [$class: 'UserExclusion', excludedUsers: 'amguist']], gitTool: 'Git 1.9.4', submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'github_user', url:sourceCodeUrl]]])
+        checkout([$class: 'GitSCM', branches: [[name: '*/main']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'LocalBranch', localBranch: 'main'],[$class: 'WipeWorkspace'], [$class: 'UserExclusion', excludedUsers: 'amguist']], gitTool: 'Git 1.9.4', submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'githubToken', url:sourceCodeUrl]]])
     } else {
         println("Current value of source code url: " + sourceCodeUrl)
     }

@@ -22,7 +22,7 @@ def serviceBuild(ver,group,artifactId) {
 
     try {
         println("Running Maven Build ...")
-        sh 'mvn clean install'
+        sh 'mvn clean package deploy'
         isBuildSuccessful = true
         endTime = System.currentTimeMillis()
         buildTime = endTime - startTime

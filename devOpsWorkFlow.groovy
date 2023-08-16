@@ -5,7 +5,7 @@ def sourceCodeCheckout(sourceCodeUrl) {
             $class: 'GitSCM',
             branches: [[name: '*/main']],
             doGenerateSubmoduleConfigurations: false,
-            extensions: [[$class: 'CleanCheckout']],
+            extensions: [[[$class: 'WipeWorkspace']], [[$class: 'CleanCheckout']]],
             submoduleCfg: [],
             userRemoteConfigs: [[credentialsId: 'githubToken', url:sourceCodeUrl]]
         ])

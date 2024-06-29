@@ -1,5 +1,8 @@
 
 def sourceCodeCheckout(sourceCodeUrl) {
+    println("You are here ....")
+    println(sourceCodeUrl);
+    
     if ( sourceCodeUrl =~ /.git/ ) {
         checkout([
             $class: 'GitSCM',

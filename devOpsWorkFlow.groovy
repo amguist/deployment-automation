@@ -56,3 +56,6 @@ def serviceVersion() {
     }
     return version;
 }
+
+/* *** mandatory to be able to call from another bootstrap script *** */
+return this
